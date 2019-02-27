@@ -1,6 +1,6 @@
 import Foundation
 
-struct CountedSet<Element: Hashable>: ExpressibleByArrayLiteral {
+struct CountedSet<Element: Hashable>: ExpressibleByArrayLiteral{
     
     init(arrayLiteral elements: Element...) {
         for element in elements {
@@ -19,8 +19,11 @@ struct CountedSet<Element: Hashable>: ExpressibleByArrayLiteral {
     }
     
     mutating func remove(_ element: Element) {
-        set[element] = nil
-        
+        if let value = set[element] {
+            set[element] = value - 1
+        } else {
+            set[element] = nil
+        }
     }
     
     subscript(_ member: Element) -> Int {
