@@ -1,6 +1,6 @@
 import Foundation
 
-struct CountedSet<Element: Hashable>: ExpressibleByArrayLiteral{
+struct CountedSet<Element: Hashable>: ExpressibleByArrayLiteral {
     
     init(arrayLiteral elements: Element...) {
         for element in elements {
